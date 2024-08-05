@@ -9,6 +9,7 @@ int     main(int    ac, char**  av)
     t_list          *list;
     t_list          *new_node;
     t_list          *tmp;
+    int tmp_int;
 
     // a = NULL;
     // b = NULL;
@@ -19,9 +20,13 @@ int     main(int    ac, char**  av)
     {
         while (av[j])
         {
-            printf("av :%s\n", av[j]);
+            if (!check_max_min(av[j]))
+            {
+                printf("Error: %s is out of range for int.\n", av[j]);
+                return EXIT_FAILURE;
+            }
             if (check_syntax(av[j]))
-                return (printf("ERROR"), 1);
+                return (printf("INPUT ERROR"), 1);
             j++;
         }
     }
@@ -34,9 +39,12 @@ int     main(int    ac, char**  av)
             // free_list(list); // TO DO
             return (printf("malloc Error in New Node"), 0);
         append_list(&list, new_node);
-        check_list(list);
         j++;
-        }
+    }
+    if (!check_dup(list))
+        return (printf("THere Is Duplicated Nums "), 0);
+    if (!stack_sorted(list))
+        return (printf("Stack is already sorted "), 0);
     print_list(list);
 
     // init_stack_a(&a, av[1] + 1); //still

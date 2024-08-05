@@ -1,16 +1,16 @@
 #include "push_swap.h"
 
-bool    stack_sorted(t_stack_node *stack)
+int    stack_sorted(t_list *stack)
 {
     if (!stack)
         return (1);
     while(stack->next)
     {
-        if (stack->num > stack->next->num)
-            return (false);
+        if (stack->n > stack->next->n)
+            return (0);
         stack = stack->next;
     }
-    return (true);
+    return (1);
 }
 
 t_list *find_last(t_list *list)
@@ -59,7 +59,7 @@ t_list  *creat_node(char *str)
     if (!new_node)
         return (printf("Error in new node"), NULL);
     new_node->next = NULL;
-    new_node->n = ft_atoi(str);
+    new_node->n = atoi(str);
     return (new_node);
 }
 
