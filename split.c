@@ -75,15 +75,15 @@
 //     return (res);
 // }
 
-t_list  *split(char*    str)
+t_stack_node  *split(char*    str)
 {
     int i;
     int j;
     int inx;
     char *num;
     int tmp;
-    t_list *new_node;
-    t_list *list;
+    t_stack_node *new_node;
+    t_stack_node *list;
 
     i = 0;
     j = 0;

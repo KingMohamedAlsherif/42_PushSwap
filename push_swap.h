@@ -14,32 +14,31 @@ typedef struct s_stack_node
 {
     int     num;
     int     i;
-    int     cost;
-    bool    above_med;
-    bool    cheap;
-    struct s_stack_node *target;
     struct s_stack_node *next;
     struct s_stack_node *prev;
 }       t_stack_node;
 
-typedef struct s_list
-{
-    int            n;
-    struct s_list *next;
-    struct s_list *prev;
-} t_list;
-
 int check_syntax(char *num);
-int check_dup(t_list *a);
+int check_dup(t_stack_node *a);
 void free_stack(t_stack_node **stack);
 void free_errors(t_stack_node **stack);
-void append_list(t_list **list, t_list *new_node);
-t_list *split(char *num);
-t_list *find_last(t_list *list);
-void print_list(t_list *list);
-t_list *creat_node(char *str);
+void append_list(t_stack_node **list, t_stack_node *new_node);
+t_stack_node *split(char *num);
+t_stack_node *find_last(t_stack_node *list);
+void print_list(t_stack_node *list);
+t_stack_node *creat_node(char *str);
 int check_max_min(char *av);
-int check_list(t_list *list);
-int ft_atoi(const char *str);
-int stack_sorted(t_list *stack);
+int check_list(t_stack_node *list);
+long ft_atol(const char *str);
+bool stack_sorted(t_stack_node *stack);
+void sa(t_stack_node **a, bool print);
+void sb(t_stack_node **b, bool print);
+void ss(t_stack_node **a, t_stack_node **b, bool print);
+void ra(t_stack_node **a, bool print);
+void rb(t_stack_node **b, bool print);
+void rr(t_stack_node **a, t_stack_node **b, bool print);
+void rra(t_stack_node **a, bool print);
+void rrb(t_stack_node **b, bool print);
+void rrr(t_stack_node **a, t_stack_node **b, bool print);
+
 #endif

@@ -6,13 +6,13 @@
 /*   By: kingmohamedalsherif <kingmohamedalsherif@s +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 06:37:35 by kingmohamedalshe  #+#    #+#             */
-/*   Updated: 2024/08/05 18:27:11 by kingmohamedalshe ###   ########.fr       */
+/*   Updated: 2024/08/06 08:24:34 by kingmohamedalshe ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     check_syntax(char  *num)
+int      check_syntax(char  *num)
 {
     int i;
     int tmp;
@@ -65,10 +65,10 @@ int     check_max_min(char  *str)
     return 1;
 }
 
-int check_dup(t_list *list)
+int check_dup(t_stack_node *list)
 {
-    t_list *first;
-    t_list *second;
+    t_stack_node *first;
+    t_stack_node *second;
 
     first = list;
     while (first)
@@ -76,7 +76,7 @@ int check_dup(t_list *list)
         second = first->next;
         while (second)
         {
-            if (first->n == second->n)
+            if (first->num == second->num)
                 return (0);
             second = second->next;
         }

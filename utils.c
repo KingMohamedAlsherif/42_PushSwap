@@ -1,19 +1,25 @@
 #include "push_swap.h"
 
-int    stack_sorted(t_list *stack)
+bool    stack_sorted(t_stack_node *stack)
 {
-    if (!stack)
+    t_stack_node    *tmp;
+
+    tmp = stack;
+    if (!tmp)
         return (1);
-    while(stack->next)
+    while(tmp->next)
     {
-        if (stack->n > stack->next->n)
-            return (0);
-        stack = stack->next;
+        if (tmp->num > tmp->next->num)
+        {
+            printf("Break Point : %d\n", tmp->num);
+            return (false);
+        }
+        tmp = tmp->next;
     }
-    return (1);
+    return (true);
 }
 
-t_list *find_last(t_list *list)
+t_stack_node *find_last(t_stack_node *list)
 {
     if (NULL == list)
         return (NULL);
@@ -22,9 +28,9 @@ t_list *find_last(t_list *list)
     return (list);
 }
 
-void    append_list(t_list **list, t_list *new_node)
+void    append_list(t_stack_node **list, t_stack_node *new_node)
 {
-    t_list *last;
+    t_stack_node *last;
 
     if (!(*list))
     {
@@ -39,31 +45,31 @@ void    append_list(t_list **list, t_list *new_node)
     }
 }
 
-void     print_list(t_list   *list)
+void     print_list(t_stack_node   *list)
 {
-    t_list  *tmp;
+    t_stack_node  *tmp;
 
     tmp = list;
     while (tmp)
     {
-        printf("%d\n", tmp->n);
+        printf("%d\n", tmp->num);
         tmp = tmp->next;
     }
 }
 
-t_list  *creat_node(char *str)
+t_stack_node  *creat_node(char *str)
 {
-    t_list *new_node;
+    t_stack_node *new_node;
 
-    new_node = malloc(sizeof(t_list));
+    new_node = malloc(sizeof(t_stack_node));
     if (!new_node)
         return (printf("Error in new node"), NULL);
     new_node->next = NULL;
-    new_node->n = atoi(str);
+    new_node->num = atoi(str);
     return (new_node);
 }
 
-int ft_atoi(const char *str)
+long ft_atol(const char *str)
 {
     int si;
     unsigned long long num;
