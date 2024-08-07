@@ -96,3 +96,19 @@ long ft_atol(const char *str)
         return (0);
     return (num * si);
 }
+
+size_t  count_words(char const *s, char c)
+{
+    size_t words;
+    size_t i;
+
+    words = 0;
+    i = 0;
+    while (s[i])
+    {
+        if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+            words++;
+        i++;
+    }
+    return (words);
+}

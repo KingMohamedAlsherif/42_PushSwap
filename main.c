@@ -40,6 +40,7 @@ int     main(int    ac, char**  av)
         return (printf("THere Is Duplicated Nums "), 0);
     if (stack_sorted(a))
         return (printf("Stack is already sorted "), 0);
+    
     print_list(a);
     // init_stack_a(&a, av[1] + 1); //still
     // if (!stack_sorted(a))
