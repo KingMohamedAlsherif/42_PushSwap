@@ -1,79 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kingmohamedalsherif <kingmohamedalsherif@s +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/07 13:21:01 by kingmohamedalshe  #+#    #+#             */
+/*   Updated: 2024/08/07 13:21:02 by kingmohamedalshe ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-// static int  count_words(char* s, char c)
-// {
-//     int count;
-//     bool inside;
-
-//     count = 0;
-//     while(*s)
-//     {
-//         inside = false;
-//         if (*s == c)
-//             ++s;
-//         while(*s != c && *s)
-//         {
-//             if(!inside)
-//             {
-//                 ++count;
-//                 inside = true;
-//             }
-//             ++s;
-//         }
-//     }
-//     return (count);
-// }
-
-// static  char    get_next_word(char  *s, char    c)
-// {
-//     static int cursor = 0;
-//     char *next_word;
-//     int len;
-//     int i;
-
-//     len = 0;
-//     i = 0;
-//     while(s[cursor] == c)
-//         cursor++;
-//     while((s[cursor + len] != c) && (s[cursor + len]))
-//         ++len;
-//     next_word = malloc((size_t)len * sizeof(char) + 1);
-//     if (!next_word)
-//         return (NULL);
-//     while((s[cursor] != c) && s[cursor])
-//         next_word[i++] = s[cursor++];
-//     next_word[i] = '\0';
-//     return (next_word);
-// }
-
-// t_list    *split(char    *s, char    c)
-// {
-//     int     count;
-//     char    **res;
-//     int     i;
-
-//     i = 0;
-//     count = count_words(s, c);
-//     if (!count)
-//         exit (1);
-//     new_node = malloc(sizeof(char *) * (size_t)(count + 2));
-//     if (!res)
-//         return (NULL);
-//     while(count-- >= 0)
-//     {
-//         if (i == 0)
-//         {
-//             res[i] = malloc(sizeof(char));
-//             if (!res[i])
-//                 return (NULL);
-//             res[i++] = '\0';
-//             continue;
-//         }
-//         res[i++] = get_next_word(s, c);
-//     }
-//     res[i] = NULL;
-//     return (res);
-// }
 
 t_stack_node  *split(char*    str)
 {

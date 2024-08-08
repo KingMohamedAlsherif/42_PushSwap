@@ -1,5 +1,10 @@
 {
     "files.associations": {
-        "chrono": "c"
+        "chrono": "c",
+        "__bit_reference": "c",
+        "algorithm": "c",
+        "bit": "c",
+        "vector": "c",
+        "unistd.h": "c"
     }
 }
