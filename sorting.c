@@ -6,7 +6,7 @@
 /*   By: kingmohamedalsherif <kingmohamedalsherif@s +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 10:01:12 by kingmohamedalshe  #+#    #+#             */
-/*   Updated: 2024/08/08 17:44:51 by kingmohamedalshe ###   ########.fr       */
+/*   Updated: 2024/08/08 20:26:49 by kingmohamedalshe ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void	radix_sorting(t_stack_node	*a, t_stack_node	*b)
 	int size;
 
 	tmp = a;
+	print_list(tmp);
 	bit_size = 0;
 	size = count_list(tmp);
 	while(size > 1 && ++bit_size)
@@ -129,6 +130,7 @@ void	radix_sorting(t_stack_node	*a, t_stack_node	*b)
 		size = count_list(tmp);
 		while (size-- && !stack_sorted(a))
 		{
+			tmp = a;
 			if (((tmp->inx >> j) & 1) == 0)
 				pb(&b, &a, false);
 			else

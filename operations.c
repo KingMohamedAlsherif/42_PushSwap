@@ -194,14 +194,14 @@ void    push(t_stack_node   **dest, t_stack_node  **src)
 
 void pa(t_stack_node **a, t_stack_node **b, bool print)
 {
-    push(a, b);
+    push(b, a);
     if (!print)
         printf("pa\n");
 }
 
 void pb(t_stack_node **b, t_stack_node **a, bool print)
 {
-    push(b, a);
+    push(a, b);
     if (!print)
         printf("pb\n");
 }
