@@ -71,21 +71,23 @@ int     main(int    ac, char**  av)
             // printf("It's == 3\n");
             sort_three(&a);
         }
-        // else if (count_list(a) == 4 || count_list(a) == 5)
-        //     sort_four_to_five(&a, &b);
+        else if (count_list(a) == 4 || count_list(a) == 5)
+            sort_four_or_five(&a, &b);
         else
         {
             radix_sorting(&a, &b);
             // printf("mian\n");
             // print_list(a);
             // printf("\n");
-            // print_list(b);
+            //print_list(b);
         }
     }
-    if (stack_sorted(a))
-    {
-        printf("Alhamdullah We Did It");
-    }
+    // print_list(b);
+    // print_list(a);
+    // if (stack_sorted(a))
+    // {
+    //     printf("Alhamdullah We Did It");
+    // }
     // free_stack(&a);
     // free_stack(&b);
     return (0);

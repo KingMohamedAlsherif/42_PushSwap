@@ -49,6 +49,8 @@ void     print_list(t_stack_node   *list)
 {
     t_stack_node  *tmp;
 
+    if (!list || !(list)->next)
+        return ;
     tmp = list;
     while (tmp)
     {

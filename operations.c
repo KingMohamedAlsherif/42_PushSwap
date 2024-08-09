@@ -18,13 +18,11 @@ void    swap(t_stack_node   **head)
 {
     t_stack_node *tmp;
 
-    tmp = *head;
-    if (!*head || !(*head)->next)
-        return;
-    *head = (*head)->next;
-    (*head)->next = tmp;
-    (*head)->prev = NULL;
-    tmp->prev = *head;
+    tmp = (*head)->next;
+    (*head)->next = (*head)->next->next;
+    tmp->next = *head;
+    *head = tmp;
+    tmp->prev = NULL;
 }
 
 void    sa(t_stack_node **a, bool    print)
@@ -73,7 +71,7 @@ void    rotate(t_stack_node **stack)
         return ;
     last = find_last(tmp);
     last->next = tmp;
-    *stack = tmp->next;
+    *stack = tmp->next; 
     (*stack)->prev = NULL;
     tmp->next = NULL;
     tmp->prev = last;
@@ -138,13 +136,12 @@ void    rev_rotate(t_stack_node **stack)
     tmp = *stack;
     if (!tmp || !tmp->next)
         return ;
-    last = find_last(*stack);
-    tmp = *stack;
-    last->next->prev = NULL;
+    last = find_last(tmp);
+    tmp = tmp->next;
+    last->prev->next = NULL;
+    last = *stack;
     last->next = tmp;
     last->prev = NULL;
-    tmp = last;
-    last->next->prev = last;
 }
 
 void    rra(t_stack_node    **a, bool print)

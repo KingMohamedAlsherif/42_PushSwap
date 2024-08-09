@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 10:01:12 by kingmohamed       #+#    #+#             */
-/*   Updated: 2024/08/09 11:58:13 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/09 18:36:42 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,14 @@
 // 	return (max_node);
 // }
 
-void sort_three(t_stack_node **a) // Define a function that handles when stack `a` has three nodes, and sorts it
+void sort_three(t_stack_node **a) 
 {
-	t_stack_node *biggest_node; // To store a pointer to the biggest node in stack `a`
-
-	biggest_node = find_max(*a);
-	if (biggest_node == *a)				 // Check if the current node is the biggest
-		ra(a, false);					 // If so, rotate the top node to the bottom of the stack
-	else if ((*a)->next == biggest_node) // Check if the second node is the biggest
-		rra(a, false);					 // If so, reverse rotate the bottom node, to the top of the stack
-	if ((*a)->num > (*a)->next->num)	 // Check if the bottom node is the biggest, but the top node is higher than the second node
-		sa(a, false);					 // If so, simply swap the top and second nodes
+	if ((*a)->inx == 2)				
+		ra(a, false);					 
+	else if ((*a)->next->inx == 2) 
+		rra(a, false);
+	if ((*a)->inx > (*a)->next->inx)	 
+		sa(a, false);					 
 }
 
 // void sort_three(t_stack_node **a)
@@ -168,34 +165,30 @@ void	radix_sorting(t_stack_node	**a, t_stack_node	**b)
 	
 }
 
-void sort_four_to_five(t_stack_node **a, t_stack_node	**b)
+
+void    sort_four_or_five(t_stack_node  **a, t_stack_node   **b)
 {
-	t_stack_node	*tmp_a;
-	t_stack_node 	*tmp_b;
-	int				size_b;
-	
-	
-	tmp_a = *a;
-	tmp_b = *b;
-	size_b = count_list(*b);
-	while (size_b-- <= 1)
-	{
-		if (tmp_a->inx == 0 || tmp_a->inx == 1)
-			push(a, b);
+    t_stack_node    *tmp;
+
+    tmp = *a;
+    if (!tmp)
+        return;
+    while(count_list(*b) < 2)
+    {
+        if ((*a)->inx == 0 || (*a)->inx == 1)
+		{
+			// printf("inx: %d\n", (*a)->inx);
+            pb(b, a, false);
+		}
 		else
-			rotate(a);
-	}
-	if (tmp_b == 0)
-		sb(b, false);
-	if (tmp_a->inx != 4)
-	{
-		if (tmp_a->inx == 4)
-			ra(a, false);
-		else
-			rra(a, false);
-	}
-	if (tmp_b->inx > tmp_b->next->inx)
-		sa(a, false);
-	pa(a , b, false);
-	pa(a, b, false);
+            ra(a, false);
+    }
+    if (stack_sorted(*b))
+        sb(b, false);
+    sort_three(a);
+    if (stack_sorted(*a))
+        {
+			while (count_list(*b) != 0)
+            	pa(a, b, false);
+        }
 }

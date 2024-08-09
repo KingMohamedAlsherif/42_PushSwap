@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kingmohamedalsherif <kingmohamedalsherif@s +#+  +:+       +#+        */
+/*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 06:37:35 by kingmohamedalshe  #+#    #+#             */
-/*   Updated: 2024/08/06 08:24:34 by kingmohamedalshe ###   ########.fr       */
+/*   Created: 2024/08/04 06:37:35 by kingmohamed       #+#    #+#             */
+/*   Updated: 2024/08/09 14:28:13 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int      check_syntax(char  *num)
 {
     int i;
     int tmp;
+    int si;
 
     i = 0;
     if (!((num[i] == '+' || num[i] == '-') || (num[i] >= '0' && num[i] <= '9') || num[i] == ' ' || num[i] == '\t'))
@@ -25,10 +26,14 @@ int      check_syntax(char  *num)
         return (printf("It's Not Number2"), 1);
     while (num[i])
     {
-        if (!((num[i] >= '0' && num[i] <= '9') || (num[i] == ' ' || num[i] == '\t')))
+        if ((num[i] == '-' && num[i+1] == '-') || (num[i] == '+' && num[i+1]))
+            return (printf("Too many sings"));
+        if (!((num[i] >= '0' && num[i] <= '9') || (num[i] == ' ' || num[i] == '\t')
+            || (num[i] == '-' || num[i] == '+')))
             return (printf("It's Not Number3"), 1);// change as subject request (print Error on stderror)
         i++;
     }
+        
     // check_max_min(ft_atoi(num));
     return (0);
 }
