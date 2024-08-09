@@ -39,31 +39,52 @@ int     main(int    ac, char**  av)
         j++;
     }
     if (!check_dup(a))
-        return (printf("THere Is Duplicated Nums "), 0);
+        return (printf("There Is Duplicated Nums "), 0);
     if (stack_sorted(a))
         return (printf("Stack is already sorted "), 0);
     
     // print_list(a);
     indexing(a);
-    print_list(a);
+    // print_list(a);
+    // while (a)
+    //     pb(&b , &a, false);
+    // printf("List b :");
+    // print_list(b);
+    // printf("List a :");
+    // print_list(a);
+    // while (b)
+    //     pa(&a , &b, false);
+    // printf("List b :");
+    // print_list(b);
+    // printf("List a :");
+    // print_list(a);
+    // ra(&a, false);
+    // print_list(a);
     if (!stack_sorted(a))
     {
         count = count_list(a);
-        printf("count :%d\n", count);
+        // printf("count :%d\n", count);
         if (count == 2)
             sa(&a, false);
         else if (count == 3)
         {
-            printf("It's == 3\n");
+            // printf("It's == 3\n");
             sort_three(&a);
         }
-        // else if (stack_len(&a) == 4 || stack_len(&a) == 5)
-        //     sort_four_to_five(a, b);
+        // else if (count_list(a) == 4 || count_list(a) == 5)
+        //     sort_four_to_five(&a, &b);
         else
         {
-            printf("I go in radix by mistake");
-            radix_sorting(a, b);
+            radix_sorting(&a, &b);
+            // printf("mian\n");
+            // print_list(a);
+            // printf("\n");
+            // print_list(b);
         }
+    }
+    if (stack_sorted(a))
+    {
+        printf("Alhamdullah We Did It");
     }
     // free_stack(&a);
     // free_stack(&b);

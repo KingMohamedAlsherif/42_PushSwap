@@ -49,10 +49,11 @@ void rrr(t_stack_node **a, t_stack_node **b, bool print);
 int count_list(t_stack_node *stack);
 void indexing(t_stack_node *stack);
 t_stack_node *find_max(t_stack_node *stack);
-void radix_sorting(t_stack_node *a, t_stack_node *b);
-void radix_sort_stack_b(t_stack_node *b, t_stack_node *a, int bit_size, int j);
+void radix_sorting(t_stack_node **a, t_stack_node **b);
+void radix_sort_stack_b(t_stack_node **b, t_stack_node **a, int bit_size, int j);
 void sort_three(t_stack_node **a);
 void push(t_stack_node **dest, t_stack_node **src);
 void pa(t_stack_node **a, t_stack_node **b, bool print);
 void pb(t_stack_node **b, t_stack_node **a, bool print);
+void sort_four_to_five(t_stack_node **a, t_stack_node	**b);
 #endif

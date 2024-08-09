@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kingmohamedalsherif <kingmohamedalsherif@s +#+  +:+       +#+        */
+/*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 10:01:12 by kingmohamedalshe  #+#    #+#             */
-/*   Updated: 2024/08/08 20:26:49 by kingmohamedalshe ###   ########.fr       */
+/*   Created: 2024/08/06 10:01:12 by kingmohamed       #+#    #+#             */
+/*   Updated: 2024/08/09 11:58:13 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,37 +89,47 @@ void sort_three(t_stack_node **a) // Define a function that handles when stack `
 // 	}
 // }
 
-void	radix_sort_stack_b(t_stack_node *b, t_stack_node	*a, int	bit_size, int j)
+void	radix_sort_stack_b(t_stack_node **b, t_stack_node	**a, int	bit_size, int j)
 {
 	t_stack_node	*tmp;
 	int 		b_size;
+	int			size;
 
-	tmp = b;
-	b_size = count_list(b);
-	printf("Im here in sort b");
-	while (b_size-- && j <= bit_size && !stack_sorted(tmp))
+	tmp = *b;
+	b_size = count_list(*b);
+	size = count_list(*b);
+	// printf("Im here in sort b\n");
+	while (size-- && j <= bit_size && !stack_sorted(tmp))
 	{
 		if (((tmp->inx >> j) & 1) == 0)
-			rb(&b , false);
+		{
+			rb(b , false);
+			tmp = *b;
+		}
 		else
-			pa(&a, &b, false);
+		{
+			pa(a, b, false);
+			tmp = *b;
+		}
 	}
-	if(stack_sorted(b))
+	if(stack_sorted(*b))
 	{
-		while(b_size != 0)
-			pa(&a, &b, false);
+		while(*b)
+		{
+			// printf("im here in last while in b\n");
+			pa(a, b, false);
+		}
 	}
 }
 
-void	radix_sorting(t_stack_node	*a, t_stack_node	*b)
+void	radix_sorting(t_stack_node	**a, t_stack_node	**b)
 {
 	int 			j;
 	t_stack_node	*tmp;
 	int 			bit_size;
 	int size;
 
-	tmp = a;
-	print_list(tmp);
+	tmp = *a;
 	bit_size = 0;
 	size = count_list(tmp);
 	while(size > 1 && ++bit_size)
@@ -127,47 +137,65 @@ void	radix_sorting(t_stack_node	*a, t_stack_node	*b)
 	j = -1;
 	while (++j <= bit_size)
 	{
+		tmp = *a;
 		size = count_list(tmp);
-		while (size-- && !stack_sorted(a))
+		while (size-- && !stack_sorted(*a)) 
 		{
-			tmp = a;
 			if (((tmp->inx >> j) & 1) == 0)
-				pb(&b, &a, false);
+			{
+				pb(b, a, false);
+				tmp = *a;
+			}
 			else
-				ra(&a , false);
-			printf("size :%d\n", size);
-			printf("inx :%d\n", tmp->inx);
+			{
+				ra(a , false);
+				tmp = *a;	
+			}
+			// printf("size :%d\n", size);
+			// printf("inx :%d\n", tmp->inx);
 		}
 		radix_sort_stack_b(b, a, bit_size, j + 1);
 	}
-	while(b)
-		pa(&a, &b, false);
+	// print_list(*b);
+	while(*b)
+	{
+		// printf("last while\n");
+		pa(a, b, false);
+	}
+	// print_list(*b);
+	// printf("a: ");
+	// print_list(*a);
+	
 }
 
-// void sort_four_to_five_elements(t_stack_node *a, t_stack_node	*b)
-// {
-// 	t_stack_node	*tmp_a;
-// 	t_stack_node 	*tmp_b;
-
-// 	tmp_a = a;
-// 	while (tmp_b <= 1)
-// 	{
-// 		if (tmp_a->inx == 0 || tmp_a->inx == 1)
-// 			push(a, b);
-// 		else
-// 			rotate(a);
-// 	}
-// 	if (tmp_b == 0)
-// 		swap(b);
-// 	if (tmp_a->inx != 4)
-// 	{
-// 		if (tmp_a->inx == 4)
-// 			ra(a, false);
-// 		else
-// 			rra(a, false);
-// 	}
-// 	if (tmp->inx > s->a[1])
-// 		sa(a, false);
-// 	pa(a);
-// 	pa(a);
-// }
+void sort_four_to_five(t_stack_node **a, t_stack_node	**b)
+{
+	t_stack_node	*tmp_a;
+	t_stack_node 	*tmp_b;
+	int				size_b;
+	
+	
+	tmp_a = *a;
+	tmp_b = *b;
+	size_b = count_list(*b);
+	while (size_b-- <= 1)
+	{
+		if (tmp_a->inx == 0 || tmp_a->inx == 1)
+			push(a, b);
+		else
+			rotate(a);
+	}
+	if (tmp_b == 0)
+		sb(b, false);
+	if (tmp_a->inx != 4)
+	{
+		if (tmp_a->inx == 4)
+			ra(a, false);
+		else
+			rra(a, false);
+	}
+	if (tmp_b->inx > tmp_b->next->inx)
+		sa(a, false);
+	pa(a , b, false);
+	pa(a, b, false);
+}

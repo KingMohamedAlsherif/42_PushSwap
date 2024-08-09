@@ -52,9 +52,11 @@ void     print_list(t_stack_node   *list)
     tmp = list;
     while (tmp)
     {
-        printf("%d - Inx : %d\n", tmp->num, tmp->inx);
+        printf("(%d - Inx => %d) ", tmp->num, tmp->inx);
+        // printf("(%d) ", tmp->num);
         tmp = tmp->next;
     }
+    printf("\n");
 }
 
 t_stack_node  *creat_node(char *str)
