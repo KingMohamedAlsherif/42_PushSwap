@@ -137,11 +137,11 @@ void    rev_rotate(t_stack_node **stack)
     if (!tmp || !tmp->next)
         return ;
     last = find_last(tmp);
-    tmp = tmp->next;
     last->prev->next = NULL;
-    last = *stack;
-    last->next = tmp;
+    last->next = *stack;
     last->prev = NULL;
+    *stack = last;
+    last->next->prev = last;
 }
 
 void    rra(t_stack_node    **a, bool print)

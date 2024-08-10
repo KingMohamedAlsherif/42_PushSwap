@@ -82,8 +82,18 @@ int     main(int    ac, char**  av)
             //print_list(b);
         }
     }
-    // print_list(b);
     // print_list(a);
+    // pb(&b, &a, false);
+    // pb(&b, &a, false);
+    // printf("Stack B: ");
+    // print_list(b);
+    // pa(&a, &b, false);
+    // pa(&a, &b, false);
+    // printf("Stack A: ");
+    // print_list(a);
+    // printf("Stack B: ");
+    // print_list(b);
+    // rra(&a, false);
     // if (stack_sorted(a))
     // {
     //     printf("Alhamdullah We Did It");
