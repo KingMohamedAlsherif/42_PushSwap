@@ -25,7 +25,7 @@ typedef struct s_stack_node
 int check_syntax(char *num);
 int check_dup(t_stack_node *a);
 void free_stack(t_stack_node **stack);
-void free_errors(t_stack_node **stack);
+int    free_errors(t_stack_node    *a, t_stack_node    *b);
 void append_list(t_stack_node **list, t_stack_node *new_node);
 t_stack_node *split(char *num);
 t_stack_node *find_last(t_stack_node *list);
@@ -56,4 +56,5 @@ void push(t_stack_node **dest, t_stack_node **src);
 void pa(t_stack_node **a, t_stack_node **b, bool print);
 void pb(t_stack_node **b, t_stack_node **a, bool print);
 void    sort_four_or_five(t_stack_node  **a, t_stack_node   **b);
+int    print_error(void);
 #endif

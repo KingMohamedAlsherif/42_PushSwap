@@ -1,18 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 18:37:22 by malsheri          #+#    #+#             */
+/*   Updated: 2024/08/10 20:29:27 by malsheri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-// static  void    swap(t_stack_node   **head)
-// {
-//     if(!*head || !(*head)->next)
-//         return ;
-//     *head = (*head)->next;
-//     (*head)->prev->prev = *head;
-//     (*head)->prev->next = (*head)->next;
-//     if ((*head)->next)
-//         (*head)->next->prev = (*head)->prev;
-//     (*head)->next = (*head)->prev;
-//     (*head)->prev = NULL;
-// }
-
 
 void    swap(t_stack_node   **head)
 {
@@ -29,14 +27,14 @@ void    sa(t_stack_node **a, bool    print)
 {
     swap(a);
     if(!print)
-        printf("sa\n");
+        write(1,"sa\n",3);
 }
 
 void    sb(t_stack_node **b, bool    print)
 {
     swap(b);
     if(!print)
-        printf("sb\n");
+        write(1,"sb\n",4);
 }
 
 void    ss(t_stack_node **a, t_stack_node   **b, bool   print)
@@ -44,22 +42,9 @@ void    ss(t_stack_node **a, t_stack_node   **b, bool   print)
     swap(a);
     swap(b);
     if(!print)
-        printf("ss\n");
+        write(1,"ss\n",4);
 }
 
-// static  void    rotate(t_stack_node **stack)
-// {
-//     t_stack_node    *last;
-
-//     if(!*stack || !(*stack)->next)
-//         return;
-//     last = find_last(*stack);
-//     last->next = *stack;
-//     *stack = (*stack)->next;
-//     (*stack)->prev = NULL;
-//     last->next->prev = last;
-//     last->next->next = NULL;
-// }
 
 void    rotate(t_stack_node **stack)
 {
@@ -77,32 +62,18 @@ void    rotate(t_stack_node **stack)
     tmp->prev = last;
 }
 
-// void rotate(t_stack_node **stack) // Define a function that rotates the stack's top node to the bottom of the stack
-// {
-//     t_stack_node *last_node; // To store a pointer to the last node of a stack
-
-//     if (!*stack || !(*stack)->next) // Check if the stack is empty, or if there's one node
-//         return;
-//     last_node = find_last(*stack);
-//     last_node->next = *stack;          // Assign to the last node, its `next` attribute as the top node, effectively setting the current top node as the last node
-//     *stack = (*stack)->next;           // Assign to the pointer of the top node, the node after it (second from the top)
-//     (*stack)->prev = NULL;             // Complete setting the current top node by detaching it from its previous top node
-//     last_node->next->prev = last_node; // Reconnect the second node's prev pointer to point to what was previously the last node in the stack
-//     last_node->next->next = NULL;      // Assign to the `next` attribute of the current last node, `NULL` effectively setting it as the current last node, and properly null terminating the stack
-// }
-
 void    ra(t_stack_node **a, bool print)
 {
     rotate(a);
     if (!print)
-        printf("ra\n");
+        write(1,"ra\n",3);
 }
 
 void    rb(t_stack_node **b, bool print)
 {
     rotate(b);
     if (!print)
-        printf("rb\n");
+        write(1,"rb\n",3);
 }
 
 void    rr(t_stack_node **a, t_stack_node   **b, bool   print)
@@ -110,23 +81,8 @@ void    rr(t_stack_node **a, t_stack_node   **b, bool   print)
     rotate(a);
     rotate(b);
     if (!print)
-        printf("rr\n");
+        write(1,"rr\n",3);
 }
-
-
-// static  void    rev_rotate(t_stack_node **stack)
-// {
-//     t_stack_node    *last;
-
-//     if (!*stack || !(*stack)->next)
-//         return;
-//     last = find_last(*stack);
-//     last->next->prev = NULL;
-//     last->next = *stack;
-//     last->prev = NULL;
-//     *stack = last;
-//     last->next->prev = last;
-// }
 
 void    rev_rotate(t_stack_node **stack)
 {
@@ -148,14 +104,14 @@ void    rra(t_stack_node    **a, bool print)
 {
     rev_rotate(a);
     if (!print)
-        printf("rra\n");
+        write(1,"rra\n",4);
 }
 
 void rrb(t_stack_node **b, bool print)
 {
     rev_rotate(b);
     if (!print)
-        printf("rrb\n");
+        write(1,"rrb\n",4);
 }
 
 void rrr(t_stack_node **a, t_stack_node  **b, bool print)
@@ -163,7 +119,7 @@ void rrr(t_stack_node **a, t_stack_node  **b, bool print)
     rev_rotate(a);
     rev_rotate(b);
     if (!print)
-        printf("rrr\n");
+        write(1,"rrr\n",4);
 }
 
 void    push(t_stack_node   **dest, t_stack_node  **src)
@@ -195,75 +151,12 @@ void pa(t_stack_node **a, t_stack_node **b, bool print)
 {
     push(a, b);
     if (!print)
-        printf("pa\n");
+        write(1,"pa\n",3);
 }
 
 void pb(t_stack_node **b, t_stack_node **a, bool print)
 {
     push(b, a);
     if (!print)
-        printf("pb\n");
+        write(1,"pb\n",4);
 }
-
-// void    swap(char*  str, int*   array, int  size)
-// {
-//     int tmp;
-
-//     if (size <= 0)
-//         return;
-//     array[0] = tmp;
-//     array[0] = array[1];
-//     array[1] = tmp;
-//     printf("%s", str);
-// }
-
-// void    push(char*  str, t_stack_node   *stack)
-// {
-//     int tmp;
-
-//     if(strncmp(str, "pa", 3) == 0)
-//     {
-//         if (stack->b_size <= 0)
-//             return ;
-//         tmp = stack->a[0];
-//         memmove(stack->a + 1, stack->a, sizeof(int) * stack->a_size);
-//         stack->a[0] = tmp;
-//         stack->b_size--;
-//         memmove(stack->b, stack->b + 1, sizeof(int) * stack->b_size);
-//         stack->a_size++;
-//     }
-//     else if (strncmp(str, "pb", 3) == 0)
-//     {
-//         if (stack->a_size <= 0)
-//             return ;
-//         tmp = stack->a[0];
-//         memmove(stack->b + 1, stack->b, sizeof(int) * stack->b_size);
-//         stack->b[0] = tmp;
-//         stack->a_size--;
-//         memmove(stack->a, stack->a + 1, sizeof(int) * stack->a_size);
-//         stack->b_size++;
-//     }
-// }
-
-// void    rotate(int  *array, int size, char* dir, char   *list)
-// {
-//     int tmp;
-
-//     if (size < 0)
-//         return ;
-//     if (strncmp(dir, "up", 3) == 0)
-//     {
-//         tmp = array[0];
-//         memmove(array, array + 1, sizeof(int) * (size - 1));
-//         array[size - 1] = tmp;
-//         write(1, 'r', 1);
-//     }
-//     else if (strncmp(dir, "down", 5) == 0)
-//     {
-//         tmp = array[size - 1];
-//         memmove(array + 1, array, sizeof(int) * (size - 1));
-//         array[0] = tmp;
-//         write(1, "rr", 2);
-//     }
-//     printf(array);
-// }

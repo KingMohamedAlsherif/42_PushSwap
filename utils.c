@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/10 18:41:58 by malsheri          #+#    #+#             */
+/*   Updated: 2024/08/10 18:41:59 by malsheri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int    stack_sorted(t_stack_node *stack)
@@ -10,10 +22,7 @@ int    stack_sorted(t_stack_node *stack)
     while(tmp->next)
     {
         if (tmp->num > tmp->next->num)
-        {
-            // printf("Not Sorted Yet, Break Point : %d\n", tmp->num);
             return (0);
-        }
         tmp = tmp->next;
     }
     return (true);
@@ -55,7 +64,6 @@ void     print_list(t_stack_node   *list)
     while (tmp)
     {
         printf("(%d - Inx => %d) ", tmp->num, tmp->inx);
-        // printf("(%d) ", tmp->num);
         tmp = tmp->next;
     }
     printf("\n");
@@ -154,45 +162,22 @@ void     indexing(t_stack_node   *stack)
     }
 }
 
-// t_stack_node    *find_max(t_stack_node   **stack)
-// {
-//     int    max;
-//     t_stack_node *max_node;
-//     t_stack_node *tmp;
-
-//     tmp = *stack;
-//     if (!tmp)
-//         return (NULL);
-//     max = LONG_MIN;
-//     while(tmp)
-//     {
-//         if (tmp->num > max)
-//         {
-//             max = tmp->num;
-//             max_node = tmp;
-//         }
-//         tmp = tmp->next;
-//     }
-//     printf("Max is : max");
-//     return (max_node);
-// }
-
-t_stack_node *find_max(t_stack_node *stack) // Define a function that searches a stack and returns the node with the biggest number
+t_stack_node *find_max(t_stack_node *stack) 
 {
-    long max;               // To store the biggest value so far
-    t_stack_node *max_node; // To store a pointer that points to the biggest number
+    long max;               
+    t_stack_node *max_node; 
 
     if (!stack)
         return (NULL);
-    max = LONG_MIN; // Assign to the biggest value so far, the max long integer
-    while (stack)   // Loop until the end of the stack is reached
+    max = LONG_MIN; 
+    while (stack)   
     {
-        if (stack->num > max) // Check if the current node value is smaller than the biggest so far
+        if (stack->num > max) 
         {
-            max = stack->num; // If so, update the biggest number so far
-            max_node = stack; // Set the pointer to point to the node with the biggest number so far
+            max = stack->num;
+            max_node = stack;
         }
-        stack = stack->next; // Move to the next node for processing
+        stack = stack->next;
     }
     return (max_node);
 }

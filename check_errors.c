@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 06:37:35 by kingmohamed       #+#    #+#             */
-/*   Updated: 2024/08/09 14:28:13 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:05:05 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,22 @@
 int      check_syntax(char  *num)
 {
     int i;
-    int tmp;
-    int si;
-
+    
     i = 0;
     if (!((num[i] == '+' || num[i] == '-') || (num[i] >= '0' && num[i] <= '9') || num[i] == ' ' || num[i] == '\t'))
-        return (printf("It's Not Number1"), 1);
+        print_error();
     i++;
     if ((num[i] == '+' || num[i] == '-') && !(num[1] >= '0' && num[1] <= '9'))
-        return (printf("It's Not Number2"), 1);
+        print_error();
     while (num[i])
     {
         if ((num[i] == '-' && num[i+1] == '-') || (num[i] == '+' && num[i+1]))
-            return (printf("Too many sings"));
+            print_error();
         if (!((num[i] >= '0' && num[i] <= '9') || (num[i] == ' ' || num[i] == '\t')
             || (num[i] == '-' || num[i] == '+')))
-            return (printf("It's Not Number3"), 1);// change as subject request (print Error on stderror)
+            print_error();
         i++;
     }
-        
-    // check_max_min(ft_atoi(num));
     return (0);
 }
 
@@ -49,22 +45,16 @@ int     check_max_min(char  *str)
     if (*str == '-' || *str == '+')
     {
         if (*str == '-')
-        {
             si = -1;
-        }
         str++;
     }
     while (*str >= '0' && *str <= '9')
     {
         res = res * 10 + (*str - '0');
         if (si == 1 && res > INT_MAX)
-        {
             return 0; 
-        }
         else if (si == -1 && -res < INT_MIN)
-        {
             return 0; 
-        }
         str++;
     }
     return 1;
@@ -92,7 +82,6 @@ int check_dup(t_stack_node *list)
 
 void    free_stack(t_stack_node **stack)
 {
-    t_stack_node    *tmp;
     t_stack_node    *current;
     
     if (!stack)
@@ -100,17 +89,24 @@ void    free_stack(t_stack_node **stack)
     current = *stack;
     while (current)
     {
-        current->next = tmp;
         current->num = 0;
         free(current);
-        current = tmp;
+        current = current->next;
     }
     *stack = NULL;
 }
 
-void    free_errors(t_stack_node    **stack)
+int    free_errors(t_stack_node    *a, t_stack_node    *b)
 {
-    free(stack);
-    printf("Error Found");
-    exit(0);
+    if (a)
+        free_stack(&a);
+    if (b)
+        free_stack(&b);
+    return (write(2, "Erorr", 6), 1);
+    exit(1);
+}
+
+int    print_error(void)
+{
+    return(write(2, "Error", 6), 1);
 }
