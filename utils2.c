@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 07:34:33 by malsheri          #+#    #+#             */
-/*   Updated: 2024/08/11 08:08:27 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/11 09:41:38 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	indexing(t_stack_node *stack)
 
 t_stack_node	*find_max(t_stack_node *stack)
 {
-	long	max;
+	long			max;
 	t_stack_node	*max_node;
 
 	if (!stack)
@@ -96,6 +96,7 @@ t_stack_node	*find_max(t_stack_node *stack)
 	}
 	return (max_node);
 }
+
 int	check_dup(t_stack_node *list)
 {
 	t_stack_node	*first;

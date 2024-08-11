@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 10:01:12 by kingmohamed       #+#    #+#             */
-/*   Updated: 2024/08/11 08:07:40 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/11 09:22:58 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,26 @@ void	radix_sort_stack_b(t_stack_node **b, t_stack_node **a, int bit_size,
 	}
 }
 
+static void	inx_sorting(t_stack_node **a, t_stack_node **b, int size, int j)
+{
+	t_stack_node	*tmp;
+
+	tmp = *a;
+	while (size-- && !stack_sorted(*a))
+	{
+		if (((tmp->inx >> j) & 1) == 0)
+		{
+			pb(b, a, false);
+			tmp = *a;
+		}
+		else
+		{
+			ra(a, false);
+			tmp = *a;
+		}
+	}
+}
+
 void	radix_sorting(t_stack_node **a, t_stack_node **b)
 {
 	int				j;
@@ -67,19 +87,7 @@ void	radix_sorting(t_stack_node **a, t_stack_node **b)
 	{
 		tmp = *a;
 		size = count_list(tmp);
-		while (size-- && !stack_sorted(*a))
-		{
-			if (((tmp->inx >> j) & 1) == 0)
-			{
-				pb(b, a, false);
-				tmp = *a;
-			}
-			else
-			{
-				ra(a, false);
-				tmp = *a;
-			}
-		}
+		inx_sorting(a, b, size, j);
 		radix_sort_stack_b(b, a, bit_size, j + 1);
 	}
 	while (*b)

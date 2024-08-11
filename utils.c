@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 18:41:58 by malsheri          #+#    #+#             */
-/*   Updated: 2024/08/11 07:35:12 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/11 10:25:34 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_stack_node	*creat_node(char *str)
 
 	new_node = malloc(sizeof(t_stack_node));
 	if (!new_node)
-		return (printf("Error in new node"), NULL);
+		free(new_node);
 	new_node->next = NULL;
 	new_node->num = atoi(str);
 	return (new_node);
