@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 13:21:01 by kingmohamed       #+#    #+#             */
-/*   Updated: 2024/08/10 18:39:55 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/11 08:28:12 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_stack_node	*split(char *str)
 			i++;
 		num = malloc(sizeof(char) * (i - j) + 1);
 		if (!num)
-			return (printf("Error in str"), NULL);
+			print_error();
 		while (j < i)
 		{
 			num[inx] = str[j];
@@ -46,9 +46,7 @@ t_stack_node	*split(char *str)
 		new_node = creat_node(num);
 		free(num);
 		if (!new_node)
-		{
 			return (NULL);
-		}
 		append_list(&list, new_node);
 		if (str[i])
 			i++;

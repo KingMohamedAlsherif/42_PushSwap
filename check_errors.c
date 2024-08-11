@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 06:37:35 by kingmohamed       #+#    #+#             */
-/*   Updated: 2024/08/11 06:19:59 by malsheri         ###   ########.fr       */
+/*   Created: 2024/08/11 07:36:51 by malsheri          #+#    #+#             */
+/*   Updated: 2024/08/11 08:02:40 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_syntax(char *num)
 	while (num[i])
 	{
 		if ((num[i] == '-' && num[i + 1] == '-') || (num[i] == '+' && num[i
-				+ 1]))
+					+ 1]))
 			print_error();
 		if (!((num[i] >= '0' && num[i] <= '9') || (num[i] == ' '
 					|| num[i] == '\t') || (num[i] == '-' || num[i] == '+')))
@@ -56,29 +56,9 @@ int	check_max_min(char *str)
 		res = res * 10 + (*str - '0');
 		if (si == 1 && res > INT_MAX)
 			return (0);
-		else if (si == -1 && -res < INT_MIN)
+		else if ((si == -1) && (-res < INT_MIN))
 			return (0);
 		str++;
-	}
-	return (1);
-}
-
-int	check_dup(t_stack_node *list)
-{
-	t_stack_node	*first;
-	t_stack_node	*second;
-
-	first = list;
-	while (first)
-	{
-		second = first->next;
-		while (second)
-		{
-			if (first->num == second->num)
-				return (0);
-			second = second->next;
-		}
-		first = first->next;
 	}
 	return (1);
 }
@@ -107,12 +87,12 @@ int	free_errors(t_stack_node *a, t_stack_node *b)
 		free_stack(&a);
 	if (b)
 		free_stack(&b);
-	write(2, "Erorr", 6);
+	write(2, "Erorr\n", 7);
 	exit(1);
 }
 
 int	print_error(void)
 {
-	write(2, "Error", 6);
+	write(2, "Error\n", 7);
 	exit(1);
 }

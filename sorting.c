@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 10:01:12 by kingmohamed       #+#    #+#             */
-/*   Updated: 2024/08/11 06:32:31 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/11 08:07:40 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	radix_sorting(t_stack_node **a, t_stack_node **b)
 
 void	sort_four_or_five(t_stack_node **a, t_stack_node **b)
 {
-	int b_size;
+	int	b_size;
 
 	while (count_list(*b) <= 1)
 	{
@@ -102,7 +102,7 @@ void	sort_four_or_five(t_stack_node **a, t_stack_node **b)
 		indexing(*a);
 		sort_three(a);
 	}
-	else if (stack_sorted(*b))
+	if (stack_sorted(*b))
 		sb(b, false);
 	b_size = count_list(*b);
 	if (stack_sorted(*a))

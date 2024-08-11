@@ -1,19 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/11 08:05:14 by malsheri          #+#    #+#             */
+/*   Updated: 2024/08/11 08:05:21 by malsheri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdio.h>
 # include <stdlib.h>
-// #include "Libft/libft.h"
 # include <limits.h>
 # include <stdbool.h>
-// #include "ft_printf/ft_printf.h"
 # include <string.h>
 # include <unistd.h>
 
 typedef struct s_stack_node
 {
-	// int *a;
-	// int *b;
 	int					num;
 	int					inx;
 	struct s_stack_node	*next;
