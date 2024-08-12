@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 18:41:58 by malsheri          #+#    #+#             */
-/*   Updated: 2024/08/11 10:25:34 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/12 10:28:58 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,7 @@ void	append_list(t_stack_node **list, t_stack_node *new_node)
 	}
 }
 
-void	print_list(t_stack_node *list)
-{
-	t_stack_node	*tmp;
-
-	if (!list || !(list)->next)
-		return ;
-	tmp = list;
-	while (tmp)
-	{
-		printf("(%d - Inx => %d) ", tmp->num, tmp->inx);
-		tmp = tmp->next;
-	}
-	printf("\n");
-}
-
-t_stack_node	*creat_node(char *str)
+t_stack_node	* creat_node(char *str)
 {
 	t_stack_node	*new_node;
 
@@ -77,6 +62,38 @@ t_stack_node	*creat_node(char *str)
 	if (!new_node)
 		free(new_node);
 	new_node->next = NULL;
-	new_node->num = atoi(str);
+	new_node->num = ft_atol(str);
 	return (new_node);
+}
+
+// int	ft_strncmp(const char *s1, const char *s2, size_t n)
+// {
+// 	size_t	i;
+
+// 	i = 0;
+// 	if (!n)
+// 		return (0);
+// 	while (i < n - 1 && s1[i] && s2[i] && s1[i] == s2[i])
+// 		i++;
+// 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+// }
+
+int	void_spaces(char** num)
+{
+	int	i;
+	int j;
+
+	j = -1;
+	while(num[++j])
+	{
+		i = -1;
+		while (num[j][++i])
+		{
+			if ((num[j][i] >= '0' && num[j][i] <= '9'))
+				break ;
+		}
+		if (num[j][i] == '\0')
+			return (0);
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 07:36:51 by malsheri          #+#    #+#             */
-/*   Updated: 2024/08/11 08:02:40 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/12 09:04:12 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_syntax(char *num)
 	while (num[i])
 	{
 		if ((num[i] == '-' && num[i + 1] == '-') || (num[i] == '+' && num[i
-					+ 1]))
+					+ 1] == '+'))
 			print_error();
 		if (!((num[i] >= '0' && num[i] <= '9') || (num[i] == ' '
 					|| num[i] == '\t') || (num[i] == '-' || num[i] == '+')))
@@ -81,12 +81,12 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-int	free_errors(t_stack_node *a, t_stack_node *b)
+int	free_errors(t_stack_node **a, t_stack_node **b)
 {
-	if (a)
-		free_stack(&a);
-	if (b)
-		free_stack(&b);
+	if (*a)
+		free_stack(a);
+	if (*b)
+		free_stack(b);
 	write(2, "Erorr\n", 7);
 	exit(1);
 }

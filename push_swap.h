@@ -6,7 +6,7 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 08:05:14 by malsheri          #+#    #+#             */
-/*   Updated: 2024/08/11 08:05:21 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/12 09:25:56 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_stack_node
 int						check_syntax(char *num);
 int						check_dup(t_stack_node *a);
 void					free_stack(t_stack_node **stack);
-int						free_errors(t_stack_node *a, t_stack_node *b);
+int						free_errors(t_stack_node **a, t_stack_node **b);
 void					append_list(t_stack_node **list,
 							t_stack_node *new_node);
 t_stack_node			*split(char *num);
@@ -65,4 +65,5 @@ void					pa(t_stack_node **a, t_stack_node **b, bool print);
 void					pb(t_stack_node **b, t_stack_node **a, bool print);
 void					sort_four_or_five(t_stack_node **a, t_stack_node **b);
 int						print_error(void);
+int						void_spaces(char** num);
 #endif

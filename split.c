@@ -6,13 +6,13 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 13:21:01 by kingmohamed       #+#    #+#             */
-/*   Updated: 2024/08/11 10:32:24 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/12 10:45:44 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char	*parse_number(char *str, int *index)
+char	*parse_number(char *str, int *index)
 {
 	int		j;
 	int		inx;
@@ -37,10 +37,10 @@ static char	*parse_number(char *str, int *index)
 	return (num);
 }
 
-static t_stack_node	*create_and_append_node(t_stack_node **list, char *num)
+t_stack_node	*create_and_append_node(t_stack_node **list, char *num)
 {
 	t_stack_node	*new_node;
-
+	
 	new_node = creat_node(num);
 	free(num);
 	if (!new_node)

@@ -6,12 +6,11 @@
 /*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 08:39:40 by malsheri          #+#    #+#             */
-/*   Updated: 2024/08/11 10:34:17 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/12 10:43:52 by malsheri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
 
 static int	main_check(int ac, char **av)
 {
@@ -34,37 +33,40 @@ static int	main_check(int ac, char **av)
 	return (0);
 }
 
-static	void	main_sort(t_stack_node	*a, t_stack_node	*b)
+static	void	main_sort(t_stack_node	**a, t_stack_node	**b)
 {
 	int	count;
 
 	count = 0;
-	indexing(a);
-	count = count_list(a);
+	indexing(*a);
+	count = count_list(*a);
 	if (count == 2)
-		sa(&a, false);
+		sa(a, false);
 	else if (count == 3)
-		sort_three(&a);
-	else if (count_list(a) == 4 || count_list(a) == 5)
-		sort_four_or_five(&a, &b);
+		sort_three(a);
+	else if (count_list(*a) == 4 || count_list(*a) == 5)
+		sort_four_or_five(a, b);
 	else
-		radix_sorting(&a, &b);
+		radix_sorting(a, b);
 }
 
-static	void	check_again(t_stack_node	*a, t_stack_node	*b)
+static	void	check_again(t_stack_node	**a, t_stack_node	**b)
 {
-	if (!check_dup(a))
+	if (!check_dup(*a))
 		free_errors(a, b);
-	else if (stack_sorted(a))
-		free_errors(a, b);
-}
-
-static	void	free_it(t_stack_node	*a, t_stack_node	*b)
-{
-	if (stack_sorted(a))
+	else if (stack_sorted(*a))
 	{
-		free_stack(&a);
-		free_stack(&b);
+		free_stack(a);
+		return ;
+	}
+}
+
+static	void	free_it(t_stack_node	**a, t_stack_node	**b)
+{
+	if (stack_sorted(*a))
+	{
+		free_stack(a);
+		free_stack(b);
 	}
 }
 
@@ -79,20 +81,27 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (main_check(ac, av) == 1)
 		return (1);
+	if (void_spaces(av + 1) == 0)
+		return(print_error());
 	j = 1;
-	if (ac > 2)
+	if (ac >= 2)
 	{
 		while (j < ac)
 		{
 			new_node = split(av[j]);
 			if (!new_node)
-				free_errors(a, b);
+				free_errors(&a, &b);
 			append_list(&a, new_node);
 			j++;
 		}
-		check_again(a, b);
-		main_sort(a, b);
+		check_again(&a, &b);
+		main_sort(&a, &b);
 	}
-	free_it(a, b);
+	// while(a)
+	// {
+	// 	printf("A is %d, and inx is %d\n",a->num, a->inx);
+	// 	a = a->next;
+	// }
+ 	free_it(&a, &b);
 	return (0);
 }
