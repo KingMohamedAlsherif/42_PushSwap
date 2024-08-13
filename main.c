@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: kingmohamedalsherif <kingmohamedalsherif@s +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 08:39:40 by malsheri          #+#    #+#             */
-/*   Updated: 2024/08/12 10:43:52 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:24:28 by kingmohamedalshe ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (main_check(ac, av) == 1)
 		return (1);
-	if (void_spaces(av + 1) == 0)
-		return(print_error());
+	// if (void_spaces(av + 1) == 0)
+	// 	return(print_error());
 	j = 1;
 	if (ac >= 2)
 	{
@@ -97,11 +97,11 @@ int	main(int ac, char **av)
 		check_again(&a, &b);
 		main_sort(&a, &b);
 	}
-	// while(a)
-	// {
-	// 	printf("A is %d, and inx is %d\n",a->num, a->inx);
-	// 	a = a->next;
-	// }
+	while(a)
+	{
+		printf("A is %d, and inx is %d\n",a->num, a->inx);
+		a = a->next;
+	}
  	free_it(&a, &b);
 	return (0);
 }

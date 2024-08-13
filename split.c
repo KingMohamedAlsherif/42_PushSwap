@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: kingmohamedalsherif <kingmohamedalsherif@s +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 13:21:01 by kingmohamed       #+#    #+#             */
-/*   Updated: 2024/08/12 10:45:44 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:47:14 by kingmohamedalshe ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*parse_number(char *str, int *index)
 	j = *index;
 	while (str[*index] && (str[*index] != ' ' && str[*index] != '\t'))
 		(*index)++;
+	// if (j == (*index))
+	// 	return (NULL);
 	num = malloc(sizeof(char) * (*index - j) + 1);
 	if (!num)
 		print_error();
@@ -41,6 +43,8 @@ t_stack_node	*create_and_append_node(t_stack_node **list, char *num)
 {
 	t_stack_node	*new_node;
 	
+	if (num == NULL)
+		return(NULL);
 	new_node = creat_node(num);
 	free(num);
 	if (!new_node)
@@ -62,7 +66,7 @@ t_stack_node	*split(char *str)
 		num = parse_number(str, &inx);
 		if (!create_and_append_node(&list, num))
 			return (NULL);
-		if (str[inx])
+		while (str[inx] && str[inx] == ' ') 
 			inx++;
 	}
 	return (list);

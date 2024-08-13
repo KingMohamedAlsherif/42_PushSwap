@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malsheri <malsheri@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: kingmohamedalsherif <kingmohamedalsherif@s +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 18:41:58 by malsheri          #+#    #+#             */
-/*   Updated: 2024/08/12 10:28:58 by malsheri         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:56:59 by kingmohamedalshe ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,6 @@ t_stack_node	* creat_node(char *str)
 	new_node->num = ft_atol(str);
 	return (new_node);
 }
-
-// int	ft_strncmp(const char *s1, const char *s2, size_t n)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	if (!n)
-// 		return (0);
-// 	while (i < n - 1 && s1[i] && s2[i] && s1[i] == s2[i])
-// 		i++;
-// 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-// }
 
 int	void_spaces(char** num)
 {
